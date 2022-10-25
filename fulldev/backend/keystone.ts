@@ -1,6 +1,11 @@
 import { config, createSchema } from '@keystone-next/keystone/schema';
 import { User } from './schemas/User';
 import 'dotenv/config';
+import { createAuth } from '@keystone-next/auth';
+import {
+  withItemData,
+  statelessSessions,
+} from '@keystone-next/keystone/session';
 
 const databaseURL = process.env.DATABASE_URL || '';
 
@@ -10,25 +15,42 @@ const sessionConfig = {
   secret: process.env.COOKIE_SECRET,
 };
 
-export default config({
-  // @ts-ignore
-  server: {
-    cors: {
-      origin: [process.env.FRONTENED_URL],
-      credentials: true,
-    },
+const { withAuth } = createAuth({
+  listKey: 'User',
+  identityField: 'email',
+  secretField: 'password',
+  initFirstItem: {
+    fields: ['name', 'email', 'password'],
+    // TODO: add initial roles here
   },
-  db: {
-    adapter: 'mongoose',
-    url: databaseURL,
-  },
-  lists: createSchema({
-    // scema items
-    User,
-  }),
-  ui: {
-    // change this for different roles
-    isAccessAllowed: () => true,
-  },
-  // TODO: add session values here
 });
+
+export default withAuth(
+  config({
+    // @ts-ignore
+    server: {
+      cors: {
+        origin: [process.env.FRONTENED_URL],
+        credentials: true,
+      },
+    },
+    db: {
+      adapter: 'mongoose',
+      url: databaseURL,
+    },
+    lists: createSchema({
+      // scema items
+      User,
+    }),
+    ui: {
+      // change this for different roles
+
+      // show the UI only for people who pass this test
+      isAccessAllowed: ({ session }) => !!session?.data,
+    },
+    // TODO: add session values here
+    session: withItemData(statelessSessions(sessionConfig), {
+      User: 'id',
+    }),
+  })
+);
