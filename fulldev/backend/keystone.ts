@@ -9,6 +9,7 @@ import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
 import 'dotenv/config';
 import { relationship } from '@keystone-next/fields';
+import { insertSeedData } from './seed-data';
 
 const databaseURL = process.env.DATABASE_URL || '';
 
@@ -40,6 +41,12 @@ export default withAuth(
     db: {
       adapter: 'mongoose',
       url: databaseURL,
+      async onConnect(keystone) {
+        console.log('CONNECTED BABY!');
+        if (process.argv.includes('--seed-data')) {
+          await insertSeedData(keystone);
+        }
+      },
     },
     lists: createSchema({
       // scema items
