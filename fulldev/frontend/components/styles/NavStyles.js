@@ -6,6 +6,7 @@ const NavStyles = styled.ul`
   display: flex;
   justify-self: end;
   font-size: 2rem;
+  --lightGray: #e1d1d1;
   a,
   button {
     padding: 1rem 3rem;
@@ -25,6 +26,7 @@ const NavStyles = styled.ul`
     &:before {
       content: '';
       width: 2px;
+      /* background: black; */
       background: var(--lightGray);
       height: 100%;
       left: 0;
@@ -48,7 +50,7 @@ const NavStyles = styled.ul`
     &:hover,
     &:focus {
       outline: none;
-      text-decoration:none;
+      text-decoration: none;
       &:after {
         width: calc(100% - 60px);
       }

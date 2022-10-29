@@ -20,9 +20,10 @@ const GlobalStyles = createGlobalStyle`
         --lightGrey: #e1d1d1;
         --lightGray: var(--lightGrey)
         --offWhite: #ededed;
-        --maxWidth: 100px;
+        --maxWidth: 1000px;
         --bs: 0 12px 24px 0 rgba(0,0,0,0.09);
         box-sizing : border-box ;
+        font-size: 10px;
     }
     *, *:before; *:after {
         box-sizing: inherit;
@@ -33,7 +34,7 @@ const GlobalStyles = createGlobalStyle`
         font-family: 'radnika_next',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         padding: 0;
         margin: 0;
-        font-size: 1.5rem;
+        font-size: 62.5%;
         line-height: 2;
     }
     a {
