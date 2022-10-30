@@ -3,6 +3,8 @@ import ItemStyles from './styles/ItemStyles';
 import Title from './styles/Title';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
+import UpdateProduct from './UpdateProduct';
+import DeleteProduct from './DeleteProduct';
 
 export default function Product({ product }) {
   return (
@@ -16,7 +18,25 @@ export default function Product({ product }) {
       </Title>
       <PriceTag>{formatMoney(product.price)}</PriceTag>
       <p>{product.description}</p>
+      <div className="buttonList">
+        <Link
+          // next.js format option for urls:
+          // pathname chooses the page to show
+          // query defines what gets passed into the query param
+          href={{
+            pathname: '/update',
+            query: {
+              id: product.id,
+            },
+          }}
+        >
+          ✏️ Edit
+        </Link>
+        <DeleteProduct id={product.id}>Delete</DeleteProduct>
+      </div>
       {/* TODO: add buttons to edit and delete item */}
+
+      {/* <UpdateProduct /> */}
     </ItemStyles>
   );
 }

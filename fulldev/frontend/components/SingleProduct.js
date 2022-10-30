@@ -43,7 +43,7 @@ export default function SingleProduct({ id }) {
     // second "id" is the prop that was passed in to the function
     variables: { id },
   });
-  console.log(data);
+  // console.log(data);
   if (loading) {
     return <p>Loading...</p>;
   }

@@ -10,6 +10,8 @@ const NavStyles = styled.ul`
   a,
   button {
     padding: 1rem 3rem;
+    transition: width 0.4s;
+    transition: padding 0.2s;
     display: flex;
     align-items: center;
     position: relative;
@@ -42,13 +44,17 @@ const NavStyles = styled.ul`
       width: 0;
       position: absolute;
       transform: translateX(-50%);
-      transition: width 0.4s;
       transition-timing-function: cubic-bezier(1, -0.65, 0, 2.31);
       left: 50%;
       margin-top: 2rem;
     }
     &:hover,
     &:focus {
+      /* background-color: blue; */
+      /* transform: scale(1.5); */
+
+      padding-bottom: 1.5rem;
+      /* padding-right: 60px; */
       outline: none;
       text-decoration: none;
       &:after {

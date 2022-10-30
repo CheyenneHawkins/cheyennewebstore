@@ -1,8 +1,15 @@
-import { number } from 'prop-types';
-import { useState } from 'react';
+import { number, string } from 'prop-types';
+import { useEffect, useState } from 'react';
 
 export default function useForm(initial = {}) {
   const [inputs, setInputs] = useState(initial);
+
+  // useEffect(() => {
+  //   setInputs(initial), [initialValues];
+  // });
+
+  // console.log('Initial values:');
+  // console.log(initialValues);
 
   function handleChange(e) {
     let { value, name, type } = e.target;
