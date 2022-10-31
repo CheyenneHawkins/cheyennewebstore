@@ -29,7 +29,7 @@ const NavStyles = styled.ul`
       content: '';
       width: 2px;
       /* background: black; */
-      background: var(--lightGray);
+      /* background: var(--lightGray); */
       height: 100%;
       left: 0;
       position: absolute;
