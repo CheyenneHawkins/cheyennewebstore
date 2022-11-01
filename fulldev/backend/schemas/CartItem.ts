@@ -1,0 +1,23 @@
+import { integer, relationship, select, text } from '@keystone-next/fields';
+import { list } from '@keystone-next/keystone/schema';
+
+// this determines what the individual entries look like in the CartItems interface
+export const CartItem = list({
+  // TODO
+  // access:
+  ui: {
+    // determines what the list of CartItems looks like in KS interface
+    listView: {
+      initialColumns: ['product', 'quantity', 'user'],
+    },
+  },
+  fields: {
+    // TODO: custom label
+    quantity: integer({
+      defaultValue: 1,
+      isRequired: true,
+    }),
+    product: relationship({ ref: 'Product' }),
+    user: relationship({ ref: 'User.cart' }),
+  },
+});

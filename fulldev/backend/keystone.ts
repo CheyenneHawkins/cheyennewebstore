@@ -5,6 +5,7 @@ import {
   statelessSessions,
 } from '@keystone-next/keystone/session';
 import { relationship } from '@keystone-next/fields';
+import { CartItem } from './schemas/CartItem';
 import { User } from './schemas/User';
 import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
@@ -31,6 +32,7 @@ const { withAuth } = createAuth({
   passwordResetLink: {
     async sendToken(args) {
       await sendPasswordResetEmail(args.token, args.identity);
+      console.log('THIS IS ARGS');
       console.log(args);
     },
   },
@@ -61,6 +63,7 @@ export default withAuth(
       User,
       Product,
       ProductImage,
+      CartItem,
     }),
     ui: {
       // change this for different roles

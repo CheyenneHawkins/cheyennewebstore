@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const CartStyles = styled.div`
+  font-size: 1.2rem;
   padding: 20px;
   position: relative;
   background: white;
