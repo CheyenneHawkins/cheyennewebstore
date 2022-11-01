@@ -4,12 +4,13 @@ import {
   withItemData,
   statelessSessions,
 } from '@keystone-next/keystone/session';
+import { relationship } from '@keystone-next/fields';
 import { User } from './schemas/User';
 import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
 import 'dotenv/config';
-import { relationship } from '@keystone-next/fields';
 import { insertSeedData } from './seed-data';
+import { sendPasswordResetEmail } from './lib/mail';
 
 const databaseURL = process.env.DATABASE_URL || '';
 
@@ -26,6 +27,12 @@ const { withAuth } = createAuth({
   initFirstItem: {
     fields: ['name', 'email', 'password'],
     // TODO: add initial roles here
+  },
+  passwordResetLink: {
+    async sendToken(args) {
+      await sendPasswordResetEmail(args.token, args.identity);
+      console.log(args);
+    },
   },
 });
 
