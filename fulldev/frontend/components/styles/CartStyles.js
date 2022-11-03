@@ -23,7 +23,10 @@ const CartStyles = styled.div`
     border-bottom: 5px solid var(--black);
     margin-bottom: 2rem;
     padding-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
   }
+
   footer {
     border-top: 10px double var(--black);
     margin-top: 2rem;

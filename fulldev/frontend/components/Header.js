@@ -20,6 +20,10 @@ const Logo = styled.h1`
 `;
 
 const HeaderStyles = styled.header`
+  /* position: fixed;
+  z-index: 2;
+  background-color: white;
+  width: 100%; */
   .bar {
     border-bottom: 10px solid var(--black, black);
     display: grid;

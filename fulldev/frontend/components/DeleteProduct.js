@@ -42,13 +42,13 @@ export default function DeleteProduct({ id, children }) {
       >
         {children}
       </button>
-      <button
+      {/* <button
         onClick={() => {
           refreshPage();
         }}
       >
         REFRESH
-      </button>
+      </button> */}
     </>
   );
 }
