@@ -3,6 +3,7 @@ import NavStyles from './styles/NavStyles';
 import { useUser } from './User';
 import { UseCart } from '../lib/cartState';
 import CartCount from './CartCount';
+import SignOut from './Signout';
 
 export default function Nav() {
   const user = useUser();
@@ -16,6 +17,9 @@ export default function Nav() {
           <Link href="/sell">Sell</Link>
           <Link href="/orders">Orders</Link>
           <Link href="/account">Account</Link>
+          {/* <button type="button" onClick={SignOut}>
+            Sign Out
+          </button> */}
           <Link href="/signout">Sign Out</Link>
           <button type="button" onClick={toggleCart}>
             My Cart

@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
+import router from 'next/router';
 import useForm from '../lib/useForm';
 import Form from './styles/Form';
 import { CURRENT_USER_QUERY } from './User';
@@ -36,6 +37,9 @@ export default function SignIn() {
   async function handleSubmit(e) {
     e.preventDefault();
     await signin();
+    router.push({
+      pathname: '/products',
+    });
     resetForm();
   }
 

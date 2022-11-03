@@ -9,7 +9,7 @@ const CartStyles = styled.div`
   height: 100%;
   top: 0;
   right: 0;
-  width: 40%;
+  width: 20%;
   min-width: 500px;
   bottom: 0;
   transform: translateX(100%);
@@ -19,6 +19,18 @@ const CartStyles = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;
   ${(props) => props.open && `transform: translateX(0);`};
+
+  button {
+    border: none;
+    background-color: white;
+    color: var(--black);
+    transition: 0.05s;
+  }
+
+  button:active {
+    transform: scale(0.9);
+  }
+
   header {
     border-bottom: 5px solid var(--black);
     margin-bottom: 2rem;
@@ -46,6 +58,18 @@ const CartStyles = styled.div`
     list-style: none;
     overflow: scroll;
   }
+
+  .xout {
+    padding-right: 20px;
+    font-size: 2rem;
+    color: var(--black);
+    cursor: pointer;
+    /* background-color: pink; */
+  }
+
+  /* .xout:active {
+    transform: scale(0.9);
+  } */
 `;
 
 export default CartStyles;

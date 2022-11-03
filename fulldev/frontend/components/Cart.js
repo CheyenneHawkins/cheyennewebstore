@@ -6,12 +6,15 @@ import Supreme from './styles/Supreme';
 import formatMoney from '../lib/formatMoney';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import { UseCart, closeCart } from '../lib/cartState';
+import RemoveFromCart from './RemoveFromCart';
+
+const imgwidth = '70';
 
 function CartItem({ cartItem }) {
   return (
     <CartItemStyles>
       <img
-        width="100"
+        width={imgwidth}
         src={cartItem.product.photo.image.publicUrlTransformed}
         alt={cartItem.product.name}
       />
@@ -25,7 +28,8 @@ function CartItem({ cartItem }) {
           ea
         </p>
       </div>
-      {cartItem.id}
+      <div />
+      <RemoveFromCart id={cartItem.id} />
     </CartItemStyles>
   );
 }
@@ -34,6 +38,9 @@ const CartItemStyles = styled.li`
   padding: 1rem 0;
   border-bottom: 1px solid var(--lightGrey);
   grid-template-columns: auto 1fr auto;
+  display: grid;
+  grid-template-columns: 70px 1fr 1fr auto;
+  grid-gap: 10px;
   img {
     margin-right: 1rem;
   }
@@ -53,7 +60,7 @@ export default function Cart() {
     <CartStyles open={cartOpen}>
       <header>
         <Supreme>{me.name}'s Cart</Supreme>
-        <CloseButton onClick={closeCart}>&times;</CloseButton>
+        <CloseButton onClick={closeCart}>close</CloseButton>
       </header>
       <ul>
         {me.cart.map((cartItem) => (

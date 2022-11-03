@@ -2,7 +2,7 @@ import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import { CURRENT_USER_QUERY } from './User';
 import waait from '../node_modules/waait';
-import { UseCart } from '../lib/cartState';
+import { UseCart, openCart } from '../lib/cartState';
 
 const ADD_TO_CART_MUTATION = gql`
   mutation ADD_TO_CART_MUTATION($id: ID!) {
