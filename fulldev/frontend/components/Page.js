@@ -50,6 +50,24 @@ const GlobalStyles = createGlobalStyle`
         //font declarations on the body don't apply to buttons for some reason
         font-family: 'radnika_next',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
+    .ordertotal {
+      color: var(--black);
+      display: grid;
+      grid-template-columns: 200px auto;
+      align-items: baseline;
+      justify-content: start;
+    }
+
+    .ordertotal > * {
+      padding: 10px;
+      justify-self: end;
+    }
+
+    .qty { 
+      padding-top: 0;
+      text-align: start;
+    }
+
 `;
 
 const InnerStyles = styled.div`

@@ -40,10 +40,6 @@ export default function UpdateProduct({ id }) {
     variables: { id },
   });
 
-  // console.log(data.Product.name);
-  // console.log(data.Product.description);
-  // console.log(data.Product.name);
-
   // get mutation to update product
 
   // since we've already used the variables data, error, and loading, we can rename them as we declare them here
@@ -72,13 +68,6 @@ export default function UpdateProduct({ id }) {
               price: inputs.price,
             },
           });
-          console.log(res);
-
-          //   await createProduct();
-          //   clearForm();
-          //   Router.push({
-          //     pathname: `/product/${data}`,
-          // //   });
         }}
       >
         <DisplayError error={error} />

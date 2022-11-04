@@ -75,7 +75,7 @@ export default function Search() {
           /* eslint-disable */
           {...getInputProps({
             type: 'search',
-            placehoder: 'Search for an Item',
+            placeholder: 'Search for an Item',
             id: 'search',
             className: loading ?'loading' : '',
           })}

@@ -1,7 +1,5 @@
+import AllOrders from '../components/AllOrders';
+
 export default function OrdersPage() {
-  return (
-    <div>
-      <p>Index Herllo</p>
-    </div>
-  );
+  return <AllOrders />;
 }
