@@ -12,20 +12,22 @@ const SIGNOUT_MUTATION = gql`
 export default function SignOut() {
   const [signout] = useMutation(SIGNOUT_MUTATION, {
     // refetch the currently logged in user
-    // refetchQueries: [{ query: CURRENT_USER_QUERY }],
+    refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
 
   function autoSignOut() {
     signout();
+    router.push({
+      pathname: '/products',
+    });
   }
 
   //   autoSignOut();
 
   return (
     <>
-      <h1>Fine.</h1>
-      <button type="button" onClick={signout()}>
-        SIGN OUT MAN!
+      <button type="button" onClick={autoSignOut()}>
+        SIGN OUT
       </button>
     </>
   );

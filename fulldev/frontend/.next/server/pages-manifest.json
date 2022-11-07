@@ -2,6 +2,12 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
+  "/products": "pages/products.js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
   "/orders": "pages/orders.js",
-  "/": "pages/index.js"
+  "/order/[id]": "pages/order/[id].js",
+  "/signout": "pages/signout.js",
+  "/signin": "pages/signin.js",
+  "/sell": "pages/sell.js",
+  "/account": "pages/account.js"
 }

@@ -33,7 +33,7 @@ export default function AllOrders() {
   const OrderList = () => (
     <div>
       <ul>
-        {user.orders.map((order) => (
+        {user?.orders?.map((order) => (
           <li key={order.id}>
             <p>Order #</p>
             <Link href={`/order/${order.id}`}>{order.id}</Link>

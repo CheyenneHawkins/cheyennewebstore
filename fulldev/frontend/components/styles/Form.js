@@ -13,8 +13,9 @@ const loading = keyframes`
 `;
 
 const Form = styled.form`
+  border-radius: 15px;
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
-  background: rgba(0, 0, 0, 0.02);
+  background: rgba(0, 0, 0, 0.01);
   border: 5px solid white;
   padding: 20px;
   font-size: 1.5rem;
@@ -31,7 +32,8 @@ const Form = styled.form`
     width: 100%;
     padding: 0.5rem;
     font-size: 1rem;
-    border: 1px solid black;
+    border: none;
+    background: rgba(0, 0, 0, 0.1);
     &:focus {
       outline: 0;
       border-color: var(--red);

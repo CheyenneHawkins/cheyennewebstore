@@ -15,6 +15,8 @@ import 'dotenv/config';
 import { insertSeedData } from './seed-data';
 import { sendPasswordResetEmail } from './lib/mail';
 import { extendGraphqlSchema } from './mutations';
+import { Role } from './schemas/Roles';
+import { permissionsList } from './schemas/fields';
 
 const databaseURL = process.env.DATABASE_URL || '';
 
@@ -69,6 +71,7 @@ export default withAuth(
       CartItem,
       OrderItem,
       Order,
+      Role,
     }),
     extendGraphqlSchema,
     ui: {
@@ -78,9 +81,10 @@ export default withAuth(
       // isAccessAllowed: ({ session }) => !!session?.data,
       isAccessAllowed: ({ session }) => !!session?.data,
     },
-    // TODO: add session values here
+    // relevent information about the logged in user to the session
+    // permissionsList is the array of role permissions
     session: withItemData(statelessSessions(sessionConfig), {
-      User: 'id',
+      User: `id name email role { ${permissionsList.join(' ')}}`,
     }),
   })
 );

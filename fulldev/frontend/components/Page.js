@@ -1,6 +1,7 @@
 import propTypes, { node } from 'prop-types';
 import styled, { createGlobalStyle } from 'styled-components';
 import Header from './Header';
+// import Header from './HeaderV2';
 
 // create all the custom variable properties
 const GlobalStyles = createGlobalStyle`
@@ -50,6 +51,7 @@ const GlobalStyles = createGlobalStyle`
         //font declarations on the body don't apply to buttons for some reason
         font-family: 'radnika_next',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
+
     .ordertotal {
       color: var(--black);
       display: grid;
