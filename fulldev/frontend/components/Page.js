@@ -1,15 +1,17 @@
 import propTypes, { node } from 'prop-types';
 import styled, { createGlobalStyle } from 'styled-components';
-import Header from './Header';
-// import Header from './HeaderV2';
+// import Header from './Header';
+import Header from './HeaderV2';
 
 // create all the custom variable properties
 const GlobalStyles = createGlobalStyle`
     @font-face {
-        font-family: 'radnika_next';
-        src: url('/static/radnikanext-medium-webfont.woff2');
-        format('woff2');
-        font-weight: normal;
+        font-family: 'josefin-sans';
+        src: url('https://use.typekit.net/imh2fke.css');
+        ${'' /* font-family: 'radnika_next'; */}
+        ${'' /* src: url('/static/radnikanext-medium-webfont.woff2'); */}
+        ${'' /* format('woff2'); */}
+        font-weight: 400;
         font-style: normal;
 
     }
@@ -41,6 +43,7 @@ const GlobalStyles = createGlobalStyle`
     a {
         text-decoration: none;
         color: var(--black);
+
     }
 
     a:hover {
@@ -69,6 +72,7 @@ const GlobalStyles = createGlobalStyle`
       padding-top: 0;
       text-align: start;
     }
+
 
 `;
 

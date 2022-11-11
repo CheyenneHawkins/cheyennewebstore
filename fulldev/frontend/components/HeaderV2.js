@@ -2,16 +2,21 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import Cart from './Cart';
-import Nav from './Nav';
+import Nav from './NavV2';
 import Search from './Search';
 
 const Logo = styled.h1`
-  font-size: 4rem;
+  font-size: 2rem;
+  margin-top: 0;
   margin-left: 2rem;
   position: relative;
+  display: grid;
+  justify-content: center;
+  align-items: center;
   z-index: 2;
-  background: pink;
+  /* background: red; */
   transform: scale();
+  height: 100%;
   a {
     color: black;
     text-decoration: none;
@@ -21,10 +26,30 @@ const Logo = styled.h1`
 `;
 
 const HeaderStyles = styled.header`
-  /* position: fixed;
-  z-index: 2;
-  background-color: white;
-  width: 100%; */
+  --headerwidth: 300px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  height: 60px;
+  overflow: hidden;
+
+  .headerspacer {
+    width: var(--headerwidth);
+    /* background: green; */
+  }
+
+  .headerline {
+    display: grid;
+    grid-template-columns: auto minmax(100px, 1fr) minmax(100px, 1fr);
+    grid-template-rows: 60px;
+    overflow-wrap: normal;
+  }
+
+  .navcart {
+    display: flex;
+    justify-content: end;
+    /* background-color: aqua; */
+  }
+
   .bar {
     border-bottom: 10px solid var(--black, black);
     display: grid;
@@ -44,17 +69,21 @@ const HeaderStyles = styled.header`
 
 export default function Header() {
   return (
-    <HeaderStyles>
-      <div className="bar">
-        <Logo>
-          <Link href="/">IS STORE, BABY!</Link>
-        </Logo>
-        <Nav />
-      </div>
-      <div className="sub-bar">
-        <Search />
-      </div>
-      <Cart />
-    </HeaderStyles>
+    <>
+      <HeaderStyles>
+        <div className="headerspacer"> </div>
+        <div className="headerline">
+          <Logo>
+            <Link href="/">CHEYENNE SHOP</Link>
+          </Logo>
+          <Search />
+          <div className="navcart">
+            <Nav />
+            <Cart />
+          </div>
+        </div>
+        <div className="headerspacer"> </div>
+      </HeaderStyles>
+    </>
   );
 }

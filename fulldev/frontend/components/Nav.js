@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import NavStyles from './styles/NavStyles';
+import NavStyles from './styles/NavStylesV2';
 import { useUser } from './User';
 import { UseCart } from '../lib/cartState';
 import CartCount from './CartCount';
@@ -12,7 +12,7 @@ export default function Nav() {
   return (
     <NavStyles>
       {/* {process.env.NEXT_PUBLIC_STRIPE_KEY} */}
-      <Link href="/products">Products</Link>
+      <Link href="/products">Shop</Link>
       {user && (
         <>
           <Link href="/sell">Sell</Link>

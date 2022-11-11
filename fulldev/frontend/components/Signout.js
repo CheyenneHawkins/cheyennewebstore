@@ -1,6 +1,7 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import router from 'next/router';
+import wait from 'waait';
 import { CURRENT_USER_QUERY } from './User';
 
 const SIGNOUT_MUTATION = gql`
@@ -20,6 +21,8 @@ export default function SignOut() {
     router.push({
       pathname: '/products',
     });
+    // wait(1000);
+    // window.location.reload(true);
   }
 
   //   autoSignOut();
