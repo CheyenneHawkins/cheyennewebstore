@@ -42,6 +42,9 @@ export default function Home() {
           Role: _allRolesMeta {
             count
           }
+          Tag: _allTagsMeta {
+            count
+          }
         }
       `}
     />

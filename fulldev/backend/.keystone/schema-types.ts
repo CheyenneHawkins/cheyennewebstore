@@ -211,6 +211,13 @@ export type UsersCreateInput = {
   readonly data?: UserCreateInput | null;
 };
 
+export type TagRelateToManyInput = {
+  readonly create?: ReadonlyArray<TagCreateInput | null> | null;
+  readonly connect?: ReadonlyArray<TagWhereUniqueInput | null> | null;
+  readonly disconnect?: ReadonlyArray<TagWhereUniqueInput | null> | null;
+  readonly disconnectAll?: Scalars['Boolean'] | null;
+};
+
 export type ProductImageRelateToOneInput = {
   readonly create?: ProductImageCreateInput | null;
   readonly connect?: ProductImageWhereUniqueInput | null;
@@ -268,6 +275,9 @@ export type ProductWhereInput = {
   readonly description_not_ends_with_i?: Scalars['String'] | null;
   readonly description_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly description_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly tags_every?: TagWhereInput | null;
+  readonly tags_some?: TagWhereInput | null;
+  readonly tags_none?: TagWhereInput | null;
   readonly photo?: ProductImageWhereInput | null;
   readonly photo_is_null?: Scalars['Boolean'] | null;
   readonly status?: Scalars['String'] | null;
@@ -311,6 +321,8 @@ export type SortProductsBy =
   | 'name_DESC'
   | 'description_ASC'
   | 'description_DESC'
+  | 'tags_ASC'
+  | 'tags_DESC'
   | 'photo_ASC'
   | 'photo_DESC'
   | 'status_ASC'
@@ -323,6 +335,7 @@ export type SortProductsBy =
 export type ProductUpdateInput = {
   readonly name?: Scalars['String'] | null;
   readonly description?: Scalars['String'] | null;
+  readonly tags?: TagRelateToManyInput | null;
   readonly photo?: ProductImageRelateToOneInput | null;
   readonly status?: Scalars['String'] | null;
   readonly price?: Scalars['Int'] | null;
@@ -337,6 +350,7 @@ export type ProductsUpdateInput = {
 export type ProductCreateInput = {
   readonly name?: Scalars['String'] | null;
   readonly description?: Scalars['String'] | null;
+  readonly tags?: TagRelateToManyInput | null;
   readonly photo?: ProductImageRelateToOneInput | null;
   readonly status?: Scalars['String'] | null;
   readonly price?: Scalars['Int'] | null;
@@ -839,6 +853,67 @@ export type RolesCreateInput = {
   readonly data?: RoleCreateInput | null;
 };
 
+export type TagWhereInput = {
+  readonly AND?: ReadonlyArray<TagWhereInput | null> | null;
+  readonly OR?: ReadonlyArray<TagWhereInput | null> | null;
+  readonly id?: Scalars['ID'] | null;
+  readonly id_not?: Scalars['ID'] | null;
+  readonly id_in?: ReadonlyArray<Scalars['ID'] | null> | null;
+  readonly id_not_in?: ReadonlyArray<Scalars['ID'] | null> | null;
+  readonly name?: Scalars['String'] | null;
+  readonly name_not?: Scalars['String'] | null;
+  readonly name_contains?: Scalars['String'] | null;
+  readonly name_not_contains?: Scalars['String'] | null;
+  readonly name_starts_with?: Scalars['String'] | null;
+  readonly name_not_starts_with?: Scalars['String'] | null;
+  readonly name_ends_with?: Scalars['String'] | null;
+  readonly name_not_ends_with?: Scalars['String'] | null;
+  readonly name_i?: Scalars['String'] | null;
+  readonly name_not_i?: Scalars['String'] | null;
+  readonly name_contains_i?: Scalars['String'] | null;
+  readonly name_not_contains_i?: Scalars['String'] | null;
+  readonly name_starts_with_i?: Scalars['String'] | null;
+  readonly name_not_starts_with_i?: Scalars['String'] | null;
+  readonly name_ends_with_i?: Scalars['String'] | null;
+  readonly name_not_ends_with_i?: Scalars['String'] | null;
+  readonly name_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly product_every?: ProductWhereInput | null;
+  readonly product_some?: ProductWhereInput | null;
+  readonly product_none?: ProductWhereInput | null;
+};
+
+export type TagWhereUniqueInput = {
+  readonly id: Scalars['ID'];
+};
+
+export type SortTagsBy =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'product_ASC'
+  | 'product_DESC';
+
+export type TagUpdateInput = {
+  readonly name?: Scalars['String'] | null;
+  readonly product?: ProductRelateToManyInput | null;
+};
+
+export type TagsUpdateInput = {
+  readonly id: Scalars['ID'];
+  readonly data?: TagUpdateInput | null;
+};
+
+export type TagCreateInput = {
+  readonly name?: Scalars['String'] | null;
+  readonly product?: ProductRelateToManyInput | null;
+};
+
+export type TagsCreateInput = {
+  readonly data?: TagCreateInput | null;
+};
+
 export type _ksListsMetaInput = {
   readonly key?: Scalars['String'] | null;
   readonly auxiliary?: Scalars['Boolean'] | null;
@@ -945,11 +1020,20 @@ export type UserListFn = (
 
 export type ProductListTypeInfo = {
   key: 'Product';
-  fields: 'id' | 'name' | 'description' | 'photo' | 'status' | 'price' | 'user';
+  fields:
+    | 'id'
+    | 'name'
+    | 'description'
+    | 'tags'
+    | 'photo'
+    | 'status'
+    | 'price'
+    | 'user';
   backing: {
     readonly id: string;
     readonly name?: string | null;
     readonly description?: string | null;
+    readonly tags?: string | null;
     readonly photo?: string | null;
     readonly status?: string | null;
     readonly price?: number | null;
@@ -1176,6 +1260,39 @@ export type RoleListFn = (
   RoleListTypeInfo['fields']
 >;
 
+export type TagListTypeInfo = {
+  key: 'Tag';
+  fields: 'id' | 'name' | 'product';
+  backing: {
+    readonly id: string;
+    readonly name?: string | null;
+    readonly product?: string | null;
+  };
+  inputs: {
+    where: TagWhereInput;
+    create: TagCreateInput;
+    update: TagUpdateInput;
+  };
+  args: {
+    listQuery: {
+      readonly where?: TagWhereInput | null;
+      readonly sortBy?: ReadonlyArray<SortTagsBy> | null;
+      readonly first?: Scalars['Int'] | null;
+      readonly skip?: Scalars['Int'] | null;
+    };
+  };
+};
+
+export type TagListFn = (
+  listConfig: import('@keystone-next/keystone/schema').ListConfig<
+    TagListTypeInfo,
+    TagListTypeInfo['fields']
+  >
+) => import('@keystone-next/keystone/schema').ListConfig<
+  TagListTypeInfo,
+  TagListTypeInfo['fields']
+>;
+
 export type KeystoneListsTypeInfo = {
   readonly User: UserListTypeInfo;
   readonly Product: ProductListTypeInfo;
@@ -1184,4 +1301,5 @@ export type KeystoneListsTypeInfo = {
   readonly OrderItem: OrderItemListTypeInfo;
   readonly Order: OrderListTypeInfo;
   readonly Role: RoleListTypeInfo;
+  readonly Tag: TagListTypeInfo;
 };

@@ -1,6 +1,7 @@
 import { integer, relationship, select, text } from '@keystone-next/fields';
 import { list } from '@keystone-next/keystone/schema';
 import { isSignedIn, rules } from '../access';
+import { Tag } from './Tags';
 
 export const Product = list({
   access: {
@@ -14,6 +15,16 @@ export const Product = list({
     description: text({
       ui: {
         displayMode: 'textarea',
+      },
+    }),
+    tags: relationship({
+      ref: 'Tag.product',
+      many: true,
+      ui: {
+        displayMode: 'select',
+        // cardFields: ['name'],
+        // inlineCreate: { fields: ['name'] },
+        // inlineEdit: { fields: ['name'] },
       },
     }),
     photo: relationship({

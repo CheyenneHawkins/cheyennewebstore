@@ -8,6 +8,7 @@ import { relationship } from '@keystone-next/fields';
 import { CartItem } from './schemas/CartItem';
 import { OrderItem } from './schemas/OrderItem';
 import { Order } from './schemas/Order';
+import { Tag } from './schemas/Tags';
 import { User } from './schemas/User';
 import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
@@ -72,6 +73,7 @@ export default withAuth(
       OrderItem,
       Order,
       Role,
+      Tag,
     }),
     extendGraphqlSchema,
     ui: {

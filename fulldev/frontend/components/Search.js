@@ -65,8 +65,7 @@ export default function Search() {
     itemToString: (item) => item?.name || '',
   });
 
-  console.log(data, loading, error);
-  //   console.log(items);
+  // console.log(data, loading, error);
 
   return (
     <SearchStyles>

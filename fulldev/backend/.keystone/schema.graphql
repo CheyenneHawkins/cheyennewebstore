@@ -226,6 +226,13 @@ input UsersCreateInput {
   data: UserCreateInput
 }
 
+input TagRelateToManyInput {
+  create: [TagCreateInput]
+  connect: [TagWhereUniqueInput]
+  disconnect: [TagWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
 input ProductImageRelateToOneInput {
   create: ProductImageCreateInput
   connect: ProductImageWhereUniqueInput
@@ -245,6 +252,8 @@ type Product {
   id: ID!
   name: String
   description: String
+  tags(where: TagWhereInput, search: String, sortBy: [SortTagsBy!], orderBy: String, first: Int, skip: Int): [Tag!]!
+  _tagsMeta(where: TagWhereInput, search: String, sortBy: [SortTagsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
   photo: ProductImage
   status: String
   price: Int
@@ -294,6 +303,15 @@ input ProductWhereInput {
   description_not_ends_with_i: String
   description_in: [String]
   description_not_in: [String]
+
+  """ condition must be true for all nodes """
+  tags_every: TagWhereInput
+
+  """ condition must be true for at least 1 node """
+  tags_some: TagWhereInput
+
+  """ condition must be false for all nodes """
+  tags_none: TagWhereInput
   photo: ProductImageWhereInput
   photo_is_null: Boolean
   status: String
@@ -337,6 +355,8 @@ enum SortProductsBy {
   name_DESC
   description_ASC
   description_DESC
+  tags_ASC
+  tags_DESC
   photo_ASC
   photo_DESC
   status_ASC
@@ -350,6 +370,7 @@ enum SortProductsBy {
 input ProductUpdateInput {
   name: String
   description: String
+  tags: TagRelateToManyInput
   photo: ProductImageRelateToOneInput
   status: String
   price: Int
@@ -364,6 +385,7 @@ input ProductsUpdateInput {
 input ProductCreateInput {
   name: String
   description: String
+  tags: TagRelateToManyInput
   photo: ProductImageRelateToOneInput
   status: String
   price: Int
@@ -953,6 +975,82 @@ input RolesCreateInput {
   data: RoleCreateInput
 }
 
+""" A keystone list """
+type Tag {
+  id: ID!
+  name: String
+  product(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
+  _productMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+}
+
+input TagWhereInput {
+  AND: [TagWhereInput]
+  OR: [TagWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+
+  """ condition must be true for all nodes """
+  product_every: ProductWhereInput
+
+  """ condition must be true for at least 1 node """
+  product_some: ProductWhereInput
+
+  """ condition must be false for all nodes """
+  product_none: ProductWhereInput
+}
+
+input TagWhereUniqueInput {
+  id: ID!
+}
+
+enum SortTagsBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  product_ASC
+  product_DESC
+}
+
+input TagUpdateInput {
+  name: String
+  product: ProductRelateToManyInput
+}
+
+input TagsUpdateInput {
+  id: ID!
+  data: TagUpdateInput
+}
+
+input TagCreateInput {
+  name: String
+  product: ProductRelateToManyInput
+}
+
+input TagsCreateInput {
+  data: TagCreateInput
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -1223,6 +1321,18 @@ type Query {
   """ Retrieve the meta-data for the Role list. """
   _RolesMeta: _ListMeta
 
+  """ Search for all Tag items which match the where clause. """
+  allTags(where: TagWhereInput, search: String, sortBy: [SortTagsBy!], orderBy: String, first: Int, skip: Int): [Tag]
+
+  """ Search for the Tag item with the matching ID. """
+  Tag(where: TagWhereUniqueInput!): Tag
+
+  """ Perform a meta-query on all Tag items which match the where clause. """
+  _allTagsMeta(where: TagWhereInput, search: String, sortBy: [SortTagsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Tag list. """
+  _TagsMeta: _ListMeta
+
   """ Retrieve the meta-data for all lists. """
   _ksListsMeta(where: _ksListsMetaInput): [_ListMeta]
 
@@ -1359,6 +1469,24 @@ type Mutation {
 
   """ Delete multiple Role items by ID. """
   deleteRoles(ids: [ID!]): [Role]
+
+  """ Create a single Tag item. """
+  createTag(data: TagCreateInput): Tag
+
+  """ Create multiple Tag items. """
+  createTags(data: [TagsCreateInput]): [Tag]
+
+  """ Update a single Tag item by ID. """
+  updateTag(id: ID!, data: TagUpdateInput): Tag
+
+  """ Update multiple Tag items by ID. """
+  updateTags(data: [TagsUpdateInput]): [Tag]
+
+  """ Delete a single Tag item by ID. """
+  deleteTag(id: ID!): Tag
+
+  """ Delete multiple Tag items by ID. """
+  deleteTags(ids: [ID!]): [Tag]
   authenticateUserWithPassword(email: String!, password: String!): UserAuthenticationWithPasswordResult!
   createInitialUser(data: CreateInitialUserInput!): UserAuthenticationWithPasswordSuccess!
   sendUserPasswordResetLink(email: String!): SendUserPasswordResetLinkResult
