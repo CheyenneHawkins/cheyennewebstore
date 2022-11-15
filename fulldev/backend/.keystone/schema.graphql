@@ -32,6 +32,7 @@ type User {
   name: String
   email: String
   password_is_set: Boolean
+  address: String
   cart(where: CartItemWhereInput, search: String, sortBy: [SortCartItemsBy!], orderBy: String, first: Int, skip: Int): [CartItem!]!
   _cartMeta(where: CartItemWhereInput, search: String, sortBy: [SortCartItemsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
   orders(where: OrderWhereInput, search: String, sortBy: [SortOrdersBy!], orderBy: String, first: Int, skip: Int): [Order!]!
@@ -91,6 +92,24 @@ input UserWhereInput {
   email_in: [String]
   email_not_in: [String]
   password_is_set: Boolean
+  address: String
+  address_not: String
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_not_starts_with: String
+  address_ends_with: String
+  address_not_ends_with: String
+  address_i: String
+  address_not_i: String
+  address_contains_i: String
+  address_not_contains_i: String
+  address_starts_with_i: String
+  address_not_starts_with_i: String
+  address_ends_with_i: String
+  address_not_ends_with_i: String
+  address_in: [String]
+  address_not_in: [String]
 
   """ condition must be true for all nodes """
   cart_every: CartItemWhereInput
@@ -167,6 +186,8 @@ enum SortUsersBy {
   name_DESC
   email_ASC
   email_DESC
+  address_ASC
+  address_DESC
   cart_ASC
   cart_DESC
   orders_ASC
@@ -189,6 +210,7 @@ input UserUpdateInput {
   name: String
   email: String
   password: String
+  address: String
   cart: CartItemRelateToManyInput
   orders: OrderRelateToManyInput
   role: RoleRelateToOneInput
@@ -210,6 +232,7 @@ input UserCreateInput {
   name: String
   email: String
   password: String
+  address: String
   cart: CartItemRelateToManyInput
   orders: OrderRelateToManyInput
   role: RoleRelateToOneInput

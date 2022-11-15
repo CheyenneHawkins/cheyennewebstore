@@ -1,3 +1,4 @@
+import wait from 'waait';
 import UpdateProduct from '../components/UpdateProduct';
 
 export default function UpdatePage({ query }) {

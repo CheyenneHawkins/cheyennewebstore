@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import styled from 'styled-components';
 import { perPage } from '../config';
 import Product from './Product';
+import UpdateProduct from './UpdateProduct';
 
 // paste the query from Apollo into variable
 export const ALL_PRODUCTS_QUERY = gql`
@@ -17,6 +18,9 @@ export const ALL_PRODUCTS_QUERY = gql`
         image {
           publicUrlTransformed
         }
+      }
+      tags {
+        name
       }
     }
   }
@@ -37,6 +41,10 @@ export default function Products({ page }) {
       first: perPage,
     },
   });
+  {
+    // console.log(data);
+  }
+
   // console.log(data, error, loading);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;

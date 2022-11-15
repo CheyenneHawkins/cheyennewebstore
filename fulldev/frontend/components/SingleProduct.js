@@ -24,6 +24,9 @@ const SINGLE_ITEM_QUERY = gql`
       price
       description
       id
+      tags {
+        name
+      }
       photo {
         altText
         image {
@@ -50,23 +53,45 @@ export default function SingleProduct({ id }) {
   if (error) {
     return <DisplayError error={error} />;
   }
-  return (
-    <ProductStyles>
-      {/* Head is imported from next, allows you to inject anything
+  let tagList = '';
+
+  function getTags() {
+    let theTags = '';
+    // iterates over the array of tag objects make string
+    if (data.Product.tags) {
+      const forLength = data.Product.tags.length;
+      for (let i = 0; i < forLength; i++) {
+        theTags = theTags.concat(`${data.Product.tags[i].name}, `);
+      }
+    }
+    tagList = theTags;
+  }
+
+  if (data) {
+    getTags();
+
+    return (
+      <ProductStyles>
+        {/* Head is imported from next, allows you to inject anything
     into the head of the document, we're using it to change the title of the page
     to the product name */}
-      <Head>
-        <title>Cheyenne | {data.Product.name}</title>
-      </Head>
+        <Head>
+          <title>Cheyenne | {data.Product.name}</title>
+        </Head>
 
-      <img
-        src={data.Product.photo.image.publicUrlTransformed}
-        alt={data.Product.name}
-      />
-      <div className="details">
-        <h2>{data.Product.name}</h2>
-        <p>{data.Product.description}</p>
-      </div>
-    </ProductStyles>
-  );
+        <img
+          src={data.Product.photo.image.publicUrlTransformed}
+          alt={data.Product.name}
+          // height="700"
+          width="700"
+        />
+        <div className="details">
+          <h2>{data.Product.name}</h2>
+          <p>{data.Product.description}</p>
+          <p>Tags</p>
+          <p>{tagList}</p>
+        </div>
+      </ProductStyles>
+    );
+  }
 }

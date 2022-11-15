@@ -33,6 +33,9 @@ const ItemStyles = styled.div`
       padding: 1rem;
     }
   }
+  .thumbPic {
+    cursor: pointer;
+  }
 `;
 
 export default ItemStyles;

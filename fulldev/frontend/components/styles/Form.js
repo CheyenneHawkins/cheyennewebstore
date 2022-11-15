@@ -15,10 +15,11 @@ const loading = keyframes`
 const Form = styled.form`
   border-radius: 15px;
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
-  background: rgba(0, 0, 0, 0.01);
+  background: white;
+  /* background: rgba(0, 0, 0, 0.01); */
   border: 5px solid white;
   padding: 20px;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   line-height: 1.5;
   font-weight: 600;
   display: block;
@@ -30,12 +31,13 @@ const Form = styled.form`
   textarea,
   select {
     width: 100%;
-    padding: 0.5rem;
-    font-size: 1rem;
+    padding: 1rem;
+    font-size: 1.3rem;
     border: none;
+    border-radius: 15px;
     background: rgba(0, 0, 0, 0.1);
     &:focus {
-      outline: 0;
+      outline: 1;
       border-color: var(--red);
     }
   }

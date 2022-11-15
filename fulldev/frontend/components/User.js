@@ -1,4 +1,5 @@
 import { gql, useQuery } from '@apollo/client';
+import useForm from '../lib/useForm';
 
 export const CURRENT_USER_QUERY = gql`
   query {
@@ -7,6 +8,7 @@ export const CURRENT_USER_QUERY = gql`
         id
         email
         name
+        address
         cart {
           id
           quantity

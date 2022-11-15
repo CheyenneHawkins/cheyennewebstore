@@ -79,6 +79,24 @@ export type UserWhereInput = {
   readonly email_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly email_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly password_is_set?: Scalars['Boolean'] | null;
+  readonly address?: Scalars['String'] | null;
+  readonly address_not?: Scalars['String'] | null;
+  readonly address_contains?: Scalars['String'] | null;
+  readonly address_not_contains?: Scalars['String'] | null;
+  readonly address_starts_with?: Scalars['String'] | null;
+  readonly address_not_starts_with?: Scalars['String'] | null;
+  readonly address_ends_with?: Scalars['String'] | null;
+  readonly address_not_ends_with?: Scalars['String'] | null;
+  readonly address_i?: Scalars['String'] | null;
+  readonly address_not_i?: Scalars['String'] | null;
+  readonly address_contains_i?: Scalars['String'] | null;
+  readonly address_not_contains_i?: Scalars['String'] | null;
+  readonly address_starts_with_i?: Scalars['String'] | null;
+  readonly address_not_starts_with_i?: Scalars['String'] | null;
+  readonly address_ends_with_i?: Scalars['String'] | null;
+  readonly address_not_ends_with_i?: Scalars['String'] | null;
+  readonly address_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly address_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly cart_every?: CartItemWhereInput | null;
   readonly cart_some?: CartItemWhereInput | null;
   readonly cart_none?: CartItemWhereInput | null;
@@ -153,6 +171,8 @@ export type SortUsersBy =
   | 'name_DESC'
   | 'email_ASC'
   | 'email_DESC'
+  | 'address_ASC'
+  | 'address_DESC'
   | 'cart_ASC'
   | 'cart_DESC'
   | 'orders_ASC'
@@ -174,6 +194,7 @@ export type UserUpdateInput = {
   readonly name?: Scalars['String'] | null;
   readonly email?: Scalars['String'] | null;
   readonly password?: Scalars['String'] | null;
+  readonly address?: Scalars['String'] | null;
   readonly cart?: CartItemRelateToManyInput | null;
   readonly orders?: OrderRelateToManyInput | null;
   readonly role?: RoleRelateToOneInput | null;
@@ -195,6 +216,7 @@ export type UserCreateInput = {
   readonly name?: Scalars['String'] | null;
   readonly email?: Scalars['String'] | null;
   readonly password?: Scalars['String'] | null;
+  readonly address?: Scalars['String'] | null;
   readonly cart?: CartItemRelateToManyInput | null;
   readonly orders?: OrderRelateToManyInput | null;
   readonly role?: RoleRelateToOneInput | null;
@@ -967,6 +989,7 @@ export type UserListTypeInfo = {
     | 'name'
     | 'email'
     | 'password'
+    | 'address'
     | 'cart'
     | 'orders'
     | 'role'
@@ -982,6 +1005,7 @@ export type UserListTypeInfo = {
     readonly name?: string | null;
     readonly email?: string | null;
     readonly password?: string | null;
+    readonly address?: string | null;
     readonly cart?: string | null;
     readonly orders?: string | null;
     readonly role?: string | null;

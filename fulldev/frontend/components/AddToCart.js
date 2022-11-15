@@ -31,11 +31,11 @@ export default function AddToCart({ id }) {
           variables: { id },
           refetchQueries: [{ query: CURRENT_USER_QUERY }],
         });
-        await waait(1000);
-        console.log('Open sesame');
-        toggleCart();
-        await waait(2500);
-        closeCart();
+        // await waait(1000);
+        // console.log('Open sesame');
+        // toggleCart();
+        // await waait(2500);
+        // closeCart();
       }}
     >
       Add{loading && 'ing'} to Cart 🛒{' '}

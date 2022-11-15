@@ -18,6 +18,7 @@ export const User = list({
     name: text({ isRequired: true }),
     email: text({ isRequired: true, isUnique: true }),
     password: password(),
+    address: text(),
     cart: relationship({
       ref: 'CartItem.user',
       many: true,
@@ -38,6 +39,5 @@ export const User = list({
       ref: 'Product.user',
       many: true,
     }),
-    // TODO: add roles, cart and orders
   },
 });

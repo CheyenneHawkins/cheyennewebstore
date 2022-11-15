@@ -86,7 +86,6 @@ function CheckoutForm() {
     // change page to view order
     router.push({
       pathname: '/order/[id]',
-      // query: { id: 'butthole' },
       query: { id: order.data.checkout.id },
     });
 

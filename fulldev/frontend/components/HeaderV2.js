@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Cart from './Cart';
 import Nav from './NavV2';
-import Search from './Search';
+import SearchBox from './SearchBox';
 
 const Logo = styled.h1`
   font-size: 2rem;
@@ -76,7 +76,7 @@ export default function Header() {
           <Logo>
             <Link href="/">CHEYENNE SHOP</Link>
           </Logo>
-          <Search />
+          <SearchBox />
           <div className="navcart">
             <Nav />
             <Cart />
