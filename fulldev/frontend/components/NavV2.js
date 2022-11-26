@@ -15,7 +15,6 @@ const AccountMenu = styled.div`
   grid-template-rows: 50px;
   grid-auto-rows: 50px;
   justify-content: center;
-  /* overflow: visible; */
   z-index: 2;
   position: absolute;
   text-decoration: none;

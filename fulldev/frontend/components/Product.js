@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import ItemStyles from './styles/ItemStyles';
-import Title from './styles/Title';
+import ItemStyles from './styles/ItemStylesV2';
+import { TitleBox } from './styles/TitleV2';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
 import DeleteProduct from './DeleteProduct';
@@ -33,9 +33,9 @@ export default function Product({ product }) {
         />
       </Link>
 
-      <Title>
+      <TitleBox>
         <Link href={`/product/${product.id}`}>{product.name}</Link>
-      </Title>
+      </TitleBox>
       <PriceTag>{formatMoney(product.price)}</PriceTag>
       <p>{product.description}</p>
       <div className="buttonList">

@@ -9,7 +9,7 @@ const SearchBar = styled.div`
   padding: 10px;
   input {
     border: rgb(0, 0, 0, 0.1) solid 1px;
-    border-radius: 25px;
+    border-radius: 15px;
     font-size: 1.5rem;
     color: gray;
     border: black solid 1px;
@@ -38,12 +38,14 @@ export default function SearchBox() {
         action=""
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(e.target[0].value);
-          router.push({
-            pathname: '/search/',
-            query: { id: e.target[0].value },
-          });
-          document.getElementById('searchbox').reset();
+          if (e.target[0].value != '') {
+            console.log(e.target[0].value);
+            router.push({
+              pathname: '/search/',
+              query: { id: e.target[0].value },
+            });
+            document.getElementById('searchbox').reset();
+          }
         }}
       >
         <input type="text" placeholder="search for products" />
