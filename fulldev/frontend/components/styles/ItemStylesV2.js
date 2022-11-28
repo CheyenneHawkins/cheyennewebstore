@@ -10,7 +10,7 @@ const ItemStyles = styled.div`
   img {
     width: 100%;
     height: 400px;
-    object-fit: cover;
+    object-fit: contain;
   }
   p {
     line-height: 2;
@@ -18,7 +18,12 @@ const ItemStyles = styled.div`
     flex-grow: 1;
     padding: 0 3rem;
     padding-top: 60px;
+    padding-bottom: 8px;
     font-size: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   .buttonList {
     display: grid;

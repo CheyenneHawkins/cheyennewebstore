@@ -74,7 +74,7 @@ export default function Header() {
         <div className="headerspacer"> </div>
         <div className="headerline">
           <Logo>
-            <Link href="/">CHEYENNE SHOP</Link>
+            <Link href="/">CHEYENNE SHOES</Link>
           </Logo>
           <SearchBox />
           <div className="navcart">

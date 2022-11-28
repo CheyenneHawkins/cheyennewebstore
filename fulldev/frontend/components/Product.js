@@ -27,7 +27,7 @@ export default function Product({ product }) {
     <ItemStyles>
       <Link href={`/product/${product.id}`}>
         <img
-          src={product?.photo?.image?.publicUrlTransformed}
+          src={product?.photo?.image.publicUrlTransformed}
           alt={product.name}
           className="thumbPic"
         />
@@ -54,6 +54,14 @@ export default function Product({ product }) {
         </Link>
         <AddToCart id={product.id} />
         <DeleteProduct id={product.id}>Delete</DeleteProduct>
+        {/* <button
+          type="button"
+          onClick={() => {
+            console.log(product);
+          }}
+        >
+          CHECK IT
+        </button> */}
       </div>
     </ItemStyles>
   );

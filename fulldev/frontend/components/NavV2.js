@@ -64,7 +64,7 @@ export default function Nav() {
             </ImageStyle>
           </Link>
           <button type="button" onClick={toggleCart}>
-            My Cart
+            Cart
             <CartCount
               count={user.cart.reduce(
                 (tally, cartItem) =>

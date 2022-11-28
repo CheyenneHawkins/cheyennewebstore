@@ -2,19 +2,26 @@ import { gql, useQuery } from '@apollo/client';
 import Head from 'next/head';
 import styled from 'styled-components';
 import DisplayError from './ErrorMessage';
+import formatMoney from '../lib/formatMoney';
+import AddToCart from './AddToCart';
 
 const ProductStyles = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-flow: column;
-  max-width: var(--maxWidth)
+  max-width: var(--maxWidth);
   img {
+    margin-top: 100px;
     width: 100%
     height: 100%;
     object-fit: contain;
   }
   justify-content: center;
   align-items: top;
+`;
+
+const ProductDescription = styled.div`
+  margin-left: 50px;
 `;
 
 const SINGLE_ITEM_QUERY = gql`
@@ -85,12 +92,18 @@ export default function SingleProduct({ id }) {
           // height="700"
           width="700"
         />
-        <div className="details">
+        <ProductDescription>
+          {/* <div className="details"> */}
           <h2>{data.Product.name}</h2>
+          <h3>
+            <i>{formatMoney(data.Product.price)}</i>
+          </h3>
           <p>{data.Product.description}</p>
+          <AddToCart id={data.Product.id} />
           <p>Tags</p>
           <p>{tagList}</p>
-        </div>
+          {/* </div> */}
+        </ProductDescription>
       </ProductStyles>
     );
   }
