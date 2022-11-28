@@ -18,6 +18,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link rel="stylesheet" href="https://use.typekit.net/imh2fke.css" />
+          {/* <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> */}
         </Head>
         <body>
           <Main />
