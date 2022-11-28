@@ -1,3 +1,3 @@
 /// //////////--loads products page -----//////////////
 
-export { default } from './Products/index.js';
+export { default } from './products/index.js';
