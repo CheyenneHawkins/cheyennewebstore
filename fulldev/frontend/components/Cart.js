@@ -7,7 +7,7 @@ import formatMoney from '../lib/formatMoney';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import { UseCart, closeCart } from '../lib/cartState';
 import RemoveFromCart from './RemoveFromCart';
-import { Checkout } from './Checkout';
+import { Checkout } from './CheckoutBLANK';
 
 const imgwidth = '70';
 
