@@ -420,6 +420,8 @@ export type ProductRelateToOneInput = {
   readonly connect?: ProductWhereUniqueInput | null;
   readonly disconnect?: ProductWhereUniqueInput | null;
   readonly disconnectAll?: Scalars['Boolean'] | null;
+  readonly price?: Scalars['Int'] | null;
+
 };
 
 export type ProductImageWhereInput = {
