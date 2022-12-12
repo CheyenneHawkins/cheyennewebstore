@@ -564,6 +564,7 @@ export type CartItemCreateInput = {
 
 export type CartItemsCreateInput = {
   readonly data?: CartItemCreateInput | null;
+  readonly quantity?: Scalars['Int'] | null;
 };
 
 export type OrderRelateToOneInput = {
