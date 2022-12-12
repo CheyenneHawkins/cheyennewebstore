@@ -2,7 +2,7 @@
 
 import { CartItem } from '../schemas/CartItem';
 import { KeystoneContext, SessionStore } from '@keystone-next/types';
-import { CartItemsCreateInput } from '../.keystone/schema-types';
+import { CartItemsCreateInput, OrderCreateInput } from '../.keystone/schema-types';
 import stripeConfig from '../lib/stripe';
 import { useContext } from 'react';
 
