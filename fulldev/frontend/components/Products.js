@@ -3,7 +3,6 @@ import gql from 'graphql-tag';
 import styled from 'styled-components';
 import { perPage } from '../config';
 import Product from './Product';
-import UpdateProduct from './UpdateProduct';
 
 // paste the query from Apollo into variable
 export const ALL_PRODUCTS_QUERY = gql`
