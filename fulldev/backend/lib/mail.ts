@@ -3,11 +3,11 @@ import { createTransport, getTestMessageUrl } from 'nodemailer';
 // const nodemailer = require('nodemailer');
 
 const transport = createTransport({
-  host: process.env.MAIL_HOST,
-  port: process.env.MAIL_PORT,
+  host: `${process.env.MAIL_HOST}`,
+  port: `${process.env.MAIL_PORT}`,
   auth: {
-    user: process.env.MAIL_USER,
-    pass: process.env.MAIL_PASS,
+    user: `${process.env.MAIL_USER}`,
+    pass: `${process.env.MAIL_PASS}`,
   },
 });
 
