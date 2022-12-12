@@ -20,6 +20,7 @@ export const Order = list({
     items: relationship({ ref: 'OrderItem.order', many: true }),
     user: relationship({ ref: 'User.orders' }),
     charge: text(),
+    id: text(),
   },
   ui: { labelField: 'id' },
 });
